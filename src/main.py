@@ -7,13 +7,16 @@ import mlflow
 import mlflow.sklearn
 from pathlib import Path
 from datetime import datetime
-
-import sys
+'''import sys
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from src.data_loader import load_data, preprocess_data
 from src.evaluate import evaluate
 from src.model import train_model
+'''
+from data_loader import load_data, preprocess_data
+from evaluate import evaluate
+from model import train_model
 
 # Configurar logging (consola + archivo)
 logging.basicConfig(
@@ -62,7 +65,7 @@ def main():
         # <-- AQUÍ: Loguea el modelo en MLflow
         mlflow.sklearn.log_model(model, "model")
 
-        
+
         elapsed = time.time() - start_time
         logger.info(f"Model training complete. Time taken: {elapsed:.2f} seconds")
         evaluate(model, X_test, y_test)
