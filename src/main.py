@@ -62,10 +62,6 @@ def main():
         start_time = time.time()
         model = train_model(X_train, y_train)
 
-        # <-- AQUÍ: Loguea el modelo en MLflow
-        mlflow.sklearn.log_model(model, "model")
-
-
         elapsed = time.time() - start_time
         logger.info(f"Model training complete. Time taken: {elapsed:.2f} seconds")
         evaluate(model, X_test, y_test)
