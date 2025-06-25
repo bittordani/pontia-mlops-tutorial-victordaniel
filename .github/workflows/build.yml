@@ -1,4 +1,4 @@
-sename: "Build Model"
+name: "Build Model"
 on:
   workflow_dispatch:
   push:
