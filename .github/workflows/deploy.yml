@@ -39,7 +39,7 @@ jobs:
         run: |
           az container create \
           --name ${{ env.MODEL_NAME }} \
-          --image ${{ env.MODEL_NAME }}/${{ env.IMAGE_NAME }}:latest \
+          --image ${{ secrets.ACR_NAME }}/${{ env.IMAGE_NAME }}:latest \
           --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --registry-login-server ${{ secrets.ACR_NAME }} \
           --registry-username ${{ secrets.ACR_USERNAME }} \
           --registry-password ${{ secrets.ACR_PASSWORD }} \
