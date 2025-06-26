@@ -7,7 +7,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      MODEL_NAME: ${{ env.MODEL_NAME }}
+      MODEL_NAME: ${{ vars.MODEL_NAME }}
       MODEL_ALIAS: champion
       AZURE_CONTAINER_NAME: model-api-victordani-martinez
       IMAGE_NAME: model-api-victordani-martinez
