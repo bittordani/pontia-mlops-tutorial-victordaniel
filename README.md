@@ -1,4 +1,4 @@
-🛠️ Proyecto DevOps con MLflow y Azure 🚀
+# 🛠️ Proyecto DevOps con MLflow y Azure 🚀
 
 Este repositorio contiene un proyecto DevOps / MLOps educativo cuyo objetivo es automatizar el ciclo completo de desarrollo, entrenamiento y despliegue de un modelo de Machine Learning utilizando:
 
@@ -12,19 +12,26 @@ Azure (ACR + ACI) para despliegue en la nube
 
 FastAPI como servidor de predicciones
 
-📦 Estructura del Proyecto
+# 📦 Estructura del Proyecto
 
 📁 .github/workflows      # Pipeline (integración continua, training modelo y cre imagen Docker con Api en Azure Container)
+
 📁 data/                  # Este proyecto usa el dataset Adult Income del UCI Machine Learning Repository
+
 📁 models/                # Modelos y artefactos generados
+
 📁 model_tests/           # Tests automáticos del modelo
+
 📁 deployment/            # Dockerfile y dependencias de despliegue
+
 📁 scripts/               # Scripts auxiliares para el registro del modelo en MLflow
+
 📁 src/                   # Código fuente de entrenamiento
+
 📁 unit_test/             # Test de prueba del modelo
 
 
-⚙️ Workflows CI/CD
+# ⚙️ Workflows CI/CD
 
 El repositorio está configurado con tres pipelines automáticos:
 
@@ -56,7 +63,7 @@ Despliega la API a Azure Container Instances
 
 Prueba automáticamente el endpoint /health
 
-🔮 Endpoints de la API
+# 🔮 Endpoints de la API
 
 Una vez desplegado, el modelo es accesible mediante una API REST:
 
@@ -84,7 +91,7 @@ GET
 
 Estadísticas básicas del uso de la API
 
-🌐 Variables de entorno usadas
+# 🌐 Variables de entorno usadas
 
 Variable
 
@@ -108,7 +115,7 @@ Datos de login para Azure Container Registry
 
 🧶 Cómo ejecutar localmente (entrenamiento)
 
-📥 Dataset: Adult Income (UCI)
+## 📥 Dataset: Adult Income (UCI)
 Este proyecto usa el dataset Adult Income del UCI Machine Learning Repository.
 
 ➤ En pipelines (CI/CD)
@@ -139,7 +146,8 @@ python src/main.py
 
 Este proyecto ha sido desarrollado como parte del máster en Inteligencia Artificial, Cloud Computing y DevOps.
 
-Autor: Víctor Daniel Martínez
+#Autor: 
+Víctor Daniel Martínez
 
 🧐 ¿Qué he aprendido?
 
