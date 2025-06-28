@@ -12,108 +12,93 @@ Azure (ACR + ACI) para despliegue en la nube
 
 FastAPI como servidor de predicciones
 
+---
+
 # 📦 Estructura del Proyecto
 
-📁 .github/workflows      # Pipeline (integración continua, training modelo y cre imagen Docker con Api en Azure Container)
+- 📁 .github/workflows      # Pipeline (integración continua, training modelo y cre imagen Docker con Api en Azure Container)
 
-📁 data/                  # Este proyecto usa el dataset Adult Income del UCI Machine Learning Repository
+- 📁 data/                  # Este proyecto usa el dataset Adult Income del UCI Machine Learning Repository
 
-📁 models/                # Modelos y artefactos generados
+- 📁 models/                # Modelos y artefactos generados
 
-📁 model_tests/           # Tests automáticos del modelo
+- 📁 model_tests/           # Tests automáticos del modelo
 
-📁 deployment/            # Dockerfile y dependencias de despliegue
+- 📁 deployment/            # Dockerfile y dependencias de despliegue
 
-📁 scripts/               # Scripts auxiliares para el registro del modelo en MLflow
+- 📁 scripts/               # Scripts auxiliares para el registro del modelo en MLflow
 
-📁 src/                   # Código fuente de entrenamiento
+- 📁 src/                   # Código fuente de entrenamiento
 
-📁 unit_test/             # Test de prueba del modelo
+- 📁 unit_test/             # Test de prueba del modelo
 
+---
 
 # ⚙️ Workflows CI/CD
 
 El repositorio está configurado con tres pipelines automáticos:
 
-✅ Integration (.github/workflows/integration.yml)
+## ✅ Integration (.github/workflows/integration.yml)
 
-Ejecutado en Pull Requests
+- Ejecutado en Pull Requests
 
-Corre los tests y muestra los resultados directamente en el PR
+- Corre los tests y muestra los resultados directamente en el PR
 
-Asegura calidad antes de integrar código a main
+- Asegura calidad antes de integrar código a main
 
-🏗️ Build (.github/workflows/build.yml)
 
-Entrena el modelo usando src/main.py
+## 🏗️ Build (.github/workflows/build.yml)
 
-Guarda y registra artefactos en MLflow
+- Entrena el modelo usando src/main.py
 
-Ejecuta tests de modelo (model_tests/)
+- Guarda y registra artefactos en MLflow
 
-Guarda el run_id para posterior despliegue
+- Ejecuta tests de modelo (model_tests/)
 
-🚀 Deploy (.github/workflows/deploy.yml)
+- Guarda el run_id para posterior despliegue
 
-Construye imagen Docker con FastAPI
+## 🚀 Deploy (.github/workflows/deploy.yml)
 
-Sube la imagen a Azure Container Registry
+- Construye imagen Docker con FastAPI
 
-Despliega la API a Azure Container Instances
+- Sube la imagen a Azure Container Registry
 
-Prueba automáticamente el endpoint /health
+- Despliega la API a Azure Container Instances
+
+- Prueba automáticamente el endpoint /health
+
+---
 
 # 🔮 Endpoints de la API
 
 Una vez desplegado, el modelo es accesible mediante una API REST:
 
-Método
+- GET
 
-Ruta
+/health (Verifica que la API está operativa)
 
-Descripción
-
-GET
-
-/health
-
-Verifica que la API está operativa
-
-POST
+- POST
 
 /predict
 
 Recibe datos y devuelve predicción
 
-GET
-
-/metrics
-
-Estadísticas básicas del uso de la API
+---
 
 # 🌐 Variables de entorno usadas
 
-Variable
+- MLFLOW_TRACKING_URI (URL del servidor MLflow)
 
-Descripción
+- MODEL_URI (Ruta del modelo en el registry (ej. models:/...))
 
-MLFLOW_TRACKING_URI
+- AZURE_CREDENTIALS (Credenciales de Azure (JSON))
 
-URL del servidor MLflow
+- ACR_NAME, ACR_USERNAME... (Datos de login para Azure Container Registry)
 
-MODEL_URI
+---
 
-Ruta del modelo en el registry (ej. models:/...)
+# 🧶 Cómo ejecutar localmente (entrenamiento)
 
-AZURE_CREDENTIALS
-
-Credenciales de Azure (JSON)
-
-ACR_NAME, ACR_USERNAME...
-
-Datos de login para Azure Container Registry
-
-🧶 Cómo ejecutar localmente (entrenamiento)
 
 ## 📥 Dataset: Adult Income (UCI)
 Este proyecto usa el dataset Adult Income del UCI Machine Learning Repository.
@@ -128,27 +113,42 @@ Crear el directorio data/raw/
 
 Descargar los siguientes archivos manualmente:
 
-adult.data
+- adult.data
 
-adult.test
+- adult.test
 
 Colocarlos en data/raw/
 
-# Crear entorno virtual e instalar dependencias
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+## 🔧 Preparación del Repositorio
 
-# Entrenar el modelo
-python src/main.py
+1. Crear nuevo repositorio en Git.
+2. Clonar el repositorio con git@github.com:bittordani/pontia-mlops-tutorial-victordaniel.git.
+3. Crear entorno virtual e instalar dependencias
+    `python -m venv venv`
+    `source venv/bin/activate`
+    `pip install -r requirements.txt`
 
-🎓 Créditos
+4. Actualizar MLFLOW URL y añadir AZURE_STORAGE_CONNECTION_STRING env variable.
+5. Probar ejecución local de `main.py` para entrenar y guardar modelo.
+6. Ejecutar los unit_test de prueba
+
+---
+
+
+# 🎓 Créditos
 
 Este proyecto ha sido desarrollado como parte del máster en Inteligencia Artificial, Cloud Computing y DevOps.
 
-#Autor: 
+## Autor: 
+
 Víctor Daniel Martínez
 
-🧐 ¿Qué he aprendido?
+---
 
-✔️ Integración continua (CI)✔️ Despliegue continuo (CD)✔️ Entrenamiento automático y registro de modelos✔️ Despliegue cloud con Azure y Docker✔️ MLOps con MLflow y APIs productivas
+# 🧐 ¿Qué he aprendido?
+
+✔️ Integración continua (CI)
+✔️ Despliegue continuo (CD)
+✔️ Entrenamiento automático y registro de modelos
+✔️ Despliegue cloud con Azure y Docker
+✔️ MLOps con MLflow y APIs productivas
