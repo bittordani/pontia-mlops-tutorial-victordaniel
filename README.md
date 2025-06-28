@@ -79,9 +79,7 @@ Una vez desplegado, el modelo es accesible mediante una API REST:
 
 - POST
 
-/predict
-
-Recibe datos y devuelve predicción
+/predict (Recibe datos y devuelve predicción)
 
 ---
 
@@ -148,7 +146,18 @@ Víctor Daniel Martínez
 # 🧐 ¿Qué he aprendido?
 
 ✔️ Integración continua (CI)
+
 ✔️ Despliegue continuo (CD)
+
 ✔️ Entrenamiento automático y registro de modelos
+
 ✔️ Despliegue cloud con Azure y Docker
+
 ✔️ MLOps con MLflow y APIs productivas
+
+---
+
+# Promemas surgidos durante el proyecto
+
+* ❌ Error de configuraciones con el secrets AZURE_STORAGE_CONNECTION_STRING.
+  Solución: Meter el valor sin las comillas exteriores.
