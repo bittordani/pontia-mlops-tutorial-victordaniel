@@ -135,7 +135,7 @@ Colocarlos en data/raw/
 
 # 🎓 Créditos
 
-Este proyecto ha sido desarrollado como parte del máster en Inteligencia Artificial, Cloud Computing y DevOps.
+Este proyecto ha sido desarrollado como parte del máster en Inteligencia Artificial, Cloud Computing y DevOps de PontIa.tech
 
 ## Autor: 
 
@@ -160,4 +160,5 @@ Víctor Daniel Martínez
 # Promemas surgidos durante el proyecto
 
 * ❌ Error de configuraciones con el secrets AZURE_STORAGE_CONNECTION_STRING.
+
   Solución: Meter el valor sin las comillas exteriores.
